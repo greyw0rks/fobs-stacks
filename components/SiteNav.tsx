@@ -1,7 +1,7 @@
 /**
  * The marketing chrome: a lowercase "fobs" wordmark centred on the warm canvas,
  * warm hairline borders, a black action button (data-blue is reserved for
- * data), and a status pill marking this as an early private preview.
+ * data), and a status pill marking this as invite-only.
  *
  * A standalone landing page, so the links are in-page anchors rather than app
  * routes.
@@ -40,7 +40,7 @@ export function SiteNav({
         <div className="flex items-center gap-3">
           <span className="hidden items-center gap-1.5 rounded-full bg-[#fdeee2] px-3 py-1 text-[10px] font-medium text-[#b4560f] sm:inline-flex">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#f2a24d]" />
-            Private preview
+            By invite
           </span>
           <a className="fobs-button-primary" href={action.href}>
             {action.label}

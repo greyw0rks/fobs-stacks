@@ -23,9 +23,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "fobs — a social market in private preview",
+  title: "fobs — a social market",
   description:
-    "fobs is a social market, currently in private preview. Leave your email to hear when it opens."
+    "fobs is a social market. Leave your email to request an invite."
 };
 
 export const viewport = {
