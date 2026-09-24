@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * fobs design tokens + the semantic classes the frame components share.
+ * "Soft Editorial Fintech": one light theme on a warm off-white canvas, a
+ * single data-blue accent, and green/red reserved for real figures.
+ *
+ * Adapted from the fobs (Solana) landing for the Stacks build. The palette and
+ * the two product rules are unchanged; only the copy speaks to Stacks.
+ */
+:root {
+  color-scheme: light;
+
+  --fobs-bg: #f4f3ef;
+  --fobs-surface: #ffffff;
+  --fobs-surface-soft: #eeeee9;
+
+  --fobs-text: #111312;
+  --fobs-muted: #777872;
+  --fobs-border: #e3e2dc;
+
+  --fobs-black: #080909;
+  --fobs-blue: #3175c6;
+  --fobs-blue-soft: #dceafa;
+
+  --fobs-green: #23845b;
+  --fobs-green-soft: #dceee5;
+
+  --fobs-red: #c94c4c;
+  --fobs-red-soft: #f5dcdc;
+
+  --fobs-purple: #dfd2f2;
+  --fobs-peach: #f5ddd2;
+  --fobs-yellow: #f2e8bd;
+  --fobs-mint: #dcece3;
+
+  --fobs-radius-sm: 8px;
+  --fobs-radius-md: 12px;
+  --fobs-radius-lg: 18px;
+  --fobs-radius-xl: 24px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  background: var(--fobs-bg);
+  color: var(--fobs-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+code,
+.font-mono,
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.fobs-surface {
+  background: var(--fobs-surface);
+  border: 1px solid var(--fobs-border);
+  border-radius: var(--fobs-radius-lg);
+}
+
+.fobs-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 10px;
+  background: var(--fobs-black);
+  color: #ffffff;
+  padding: 11px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity 0.15s ease;
+}
+
+.fobs-button-primary:hover {
+  opacity: 0.88;
+}
+
+.fobs-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--fobs-border);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--fobs-text);
+  padding: 10px 15px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s ease;
+}
+
+.fobs-button-secondary:hover {
+  background: #faf9f5;
+}
