@@ -23,9 +23,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "fobs — the social market for Stacks",
+  title: "fobs — a social market in private preview",
   description:
-    "A social market built around people, markets and FOMO — real tokens on Stacks, settled on Bitcoin. Every trade is a swap your own wallet signs."
+    "fobs is a social market, currently in private preview. Leave your email to hear when it opens."
 };
 
 export const viewport = {

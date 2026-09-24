@@ -94,7 +94,7 @@ export function WaitlistForm() {
         <p className="mt-3 text-xs text-[#c94c4c]">{message}</p>
       ) : (
         <p className="mt-3 text-xs text-[#9b9c95]">
-          No custody, no seeded balances — your own signature on every trade.
+          We'll only use your email to let you know when fobs opens.
         </p>
       )}
     </form>

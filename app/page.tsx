@@ -8,19 +8,18 @@ import { price } from "@/lib/format";
 /**
  * fobs for Stacks — the landing page.
  *
- * The same idea as fobs on Solana: a social market where a trade is a real swap
- * your own wallet signs and the feed is a view of the trades that leaves behind
- * — rebuilt for Stacks, where those swaps settle on Bitcoin. Editorial,
- * full-bleed, on the warm canvas: a large lowercase-"fobs" hero, a floating
- * product card, a feature row, a markets preview, and a plain disclosure.
+ * A social market built around people and FOMO: see what your friends trade
+ * and jump in alongside them. This is an early private-preview landing page —
+ * editorial, full-bleed, on the warm canvas: a large lowercase-"fobs" hero, a
+ * floating product card, a feature row, a markets preview, and a plain
+ * disclosure.
  *
- * This is a standalone marketing page: the figures on the board are illustrative
- * sample data (see lib/data.ts), not a live indexer read.
+ * Nothing here is committed yet. The tickers and figures are placeholder sample
+ * data (see lib/data.ts) for the preview UI — not a live read, and not a claim
+ * about what fobs will list.
  */
 export default function LandingPage() {
   const assets = SAMPLE_ASSETS;
-  const indexedTrades = assets.reduce((total, asset) => total + asset.tradeCount, 0);
-  const priced = assets.filter((asset) => asset.priceKnown);
 
   return (
     <main id="top" className="min-h-screen bg-[#f4f3ef] text-[#111312]">
@@ -35,7 +34,7 @@ export default function LandingPage() {
           <div className="relative mx-auto grid max-w-[1400px] items-center gap-16 px-6 pb-20 pt-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-10 lg:pt-24">
             <div className="max-w-[620px]">
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-[#b4560f]">
-                Social market · built on Stacks
+                Social market · in private preview
               </p>
 
               <h1 className="text-[52px] font-semibold leading-[0.96] tracking-[-0.065em] sm:text-[68px] lg:text-[82px]">
@@ -45,10 +44,9 @@ export default function LandingPage() {
               </h1>
 
               <p className="mt-7 max-w-[500px] text-base leading-7 text-[#6e6f69] sm:text-lg">
-                A social market built around people, tokens and FOMO. Real assets
-                on Stacks — from Bitcoin-backed sBTC to the SIP-010 tokens people
-                actually hold — in one place. Every trade is a swap your own
-                wallet signs, settled on Bitcoin.
+                A social market built around people and FOMO — see what your
+                friends are trading and jump in alongside them. In private
+                preview; what we build is still being decided.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -62,25 +60,17 @@ export default function LandingPage() {
 
               <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
                 <div>
-                  <dt className="text-[11px] uppercase tracking-wide text-[#8b8c85]">Markets</dt>
-                  <dd className="mt-1 text-2xl font-semibold tracking-[-0.04em] tabular-nums">{assets.length}</dd>
+                  <dt className="text-[11px] uppercase tracking-wide text-[#8b8c85]">Status</dt>
+                  <dd className="mt-1 text-2xl font-semibold tracking-[-0.04em]">Preview</dd>
                 </div>
                 <div>
-                  <dt className="text-[11px] uppercase tracking-wide text-[#8b8c85]">Trades indexed</dt>
-                  <dd className="mt-1 text-2xl font-semibold tracking-[-0.04em] tabular-nums">{indexedTrades.toLocaleString()}</dd>
-                </div>
-                <div>
-                  <dt className="text-[11px] uppercase tracking-wide text-[#8b8c85]">Prices live</dt>
-                  <dd className="mt-1 text-2xl font-semibold tracking-[-0.04em] tabular-nums">{priced.length}</dd>
-                </div>
-                <div>
-                  <dt className="text-[11px] uppercase tracking-wide text-[#8b8c85]">Settlement</dt>
-                  <dd className="mt-1 text-2xl font-semibold tracking-[-0.04em]">Bitcoin</dd>
+                  <dt className="text-[11px] uppercase tracking-wide text-[#8b8c85]">Access</dt>
+                  <dd className="mt-1 text-2xl font-semibold tracking-[-0.04em]">By invite</dd>
                 </div>
               </dl>
             </div>
 
-            <HeroProduct assets={priced} />
+            <HeroProduct assets={assets} />
           </div>
         </section>
       </Reveal>
@@ -90,9 +80,9 @@ export default function LandingPage() {
         <section className="mx-auto max-w-[1400px] px-6 pb-16 lg:px-10">
           <Stagger className="grid gap-3 sm:grid-cols-3">
             {[
-              ["Real on-chain data", "Live prices and trades, read from Stacks — never invented."],
-              ["Follow your friends", "See what your people are actually buying on-chain."],
-              ["FOMO", "Your own trade, at your own size and your own signature."]
+              ["Transparency first", "Built to read data on-chain rather than invent it."],
+              ["Follow your friends", "See what the people you follow are into."],
+              ["FOMO", "Jump into a trade at your own size, on your terms."]
             ].map(([title, text]) => (
               <StaggerItem key={title} className="rounded-[18px] border border-[#e3e2dc] bg-white p-6">
                 <h3 className="text-sm font-semibold">{title}</h3>
@@ -107,20 +97,18 @@ export default function LandingPage() {
       <Reveal delay={0.1}>
         <section id="markets" className="mx-auto max-w-[1400px] px-6 pb-16 lg:px-10">
           <div className="mb-5 max-w-[620px]">
-            <h2 className="text-xl font-semibold tracking-[-0.04em]">Live markets</h2>
+            <h2 className="text-xl font-semibold tracking-[-0.04em]">Markets</h2>
             <p className="mt-2 text-sm leading-6 text-[#6e6f69]">
-              A preview of the assets fobs tracks on Stacks. In the app every
-              figure is read live — a DEX route on ALEX or Velar, or a reference
-              price — and a row with no price says so rather than showing a
-              placeholder. The values below are illustrative.
+              A preview of the interface. The assets, data, and mechanics shown
+              here aren't final — nothing on this page is a commitment.
             </p>
           </div>
 
           <MarketsTable
             assets={assets}
             changes={SAMPLE_CHANGES}
-            title="Live markets"
-            subtitle="What people are trading on Stacks"
+            title="Sample UI — not final"
+            subtitle="Preview only"
           />
         </section>
       </Reveal>
@@ -129,20 +117,19 @@ export default function LandingPage() {
       <Reveal delay={0.15}>
         <section id="how" className="mx-auto max-w-[1400px] px-6 pb-16 lg:px-10">
           <div className="mb-6 max-w-[620px]">
-            <h2 className="text-xl font-semibold tracking-[-0.04em]">How it works</h2>
+            <h2 className="text-xl font-semibold tracking-[-0.04em]">The idea</h2>
             <p className="mt-2 text-sm leading-6 text-[#6e6f69]">
-              Nothing here is simulated. A trade is a real swap your own wallet
-              signs on Stacks — anchored to Bitcoin — and the feed is a view of
-              the trades that leaves behind.
+              How we picture it working. The specifics will firm up as we build —
+              treat this as direction, not a promise.
             </p>
           </div>
 
           <ol className="grid list-none gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ["Someone trades", "Their Stacks wallet signs a swap into a real token. fobs routes it and never signs."],
-              ["It is recorded", "The confirmed swap becomes a feed row, keyed to its Stacks transaction id and anchored to Bitcoin. No custody."],
-              ["You see it", "If you follow them it appears in your feed, and you get a notification, live."],
-              ["You FOMO it", "Not a copy. Your own swap, your own size, your own signature — linked back to the original."]
+              ["Someone trades", "A person you follow makes a trade."],
+              ["It is recorded", "The trade becomes a row in the feed."],
+              ["You see it", "If you follow them, it shows up in your feed."],
+              ["You FOMO it", "Jump in with your own trade, at your own size."]
             ].map(([title, text], i) => (
               <li key={title} className="rounded-[18px] border border-[#e3e2dc] bg-white p-5">
                 <span className="text-[11px] font-semibold tabular-nums text-[#3175c6]">
@@ -160,14 +147,11 @@ export default function LandingPage() {
       <Reveal delay={0.2}>
         <section id="disclosure" className="mx-auto max-w-[1400px] px-6 pb-16 lg:px-10">
           <div className="rounded-[18px] border border-[#e3e2dc] bg-[#eeeee9] p-6 text-sm leading-6 text-[#5c5d57]">
-            <strong className="text-[#111312]">fobs issues none of these tokens.</strong>{" "}
-            Every symbol here is a real asset that already trades on Stacks —
-            Bitcoin-backed <code className="font-mono">sBTC</code>, the native{" "}
-            <code className="font-mono">STX</code> token, or a SIP-010 token like{" "}
-            <code className="font-mono">ALEX</code> or <code className="font-mono">VELAR</code>.
-            fobs mints nothing, burns nothing, and holds no key: a trade is a swap
-            your own wallet signs on a Stacks DEX. On-chain assets carry real
-            risk, and the figures on this page are illustrative sample data.
+            <strong className="text-[#111312]">This is an early preview.</strong>{" "}
+            fobs is not live yet. Everything on this page — the assets, the data,
+            and how it works — is illustrative and still being decided. Nothing
+            here is an offer or a commitment, and nothing on it should be traded
+            on.
           </div>
         </section>
       </Reveal>
@@ -181,9 +165,8 @@ export default function LandingPage() {
                 Get early access.
               </h2>
               <p className="mt-3 text-sm leading-6 text-[#6e6f69]">
-                fobs for Stacks is in private preview. Leave your email and we'll
-                send an invite — then connect a Stacks wallet like Leather or
-                Xverse to begin.
+                fobs is in private preview. Leave your email and we'll let you
+                know when it opens.
               </p>
               <WaitlistForm />
             </div>
@@ -195,8 +178,7 @@ export default function LandingPage() {
       <footer className="border-t border-[#e3e2dc]">
         <div className="mx-auto flex max-w-[1400px] flex-col gap-4 px-6 py-8 text-xs text-[#777872] sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <span className="max-w-[560px]">
-            fobs — a bridge into real markets on Stacks, settled on Bitcoin. It
-            issues nothing and signs nothing.
+            fobs — a social market, in early preview. More to come.
           </span>
           <nav className="flex flex-wrap gap-5">
             <a href="#markets" className="hover:text-[#111312]">Markets</a>
@@ -225,12 +207,12 @@ function HeroProduct({ assets }: { assets: typeof SAMPLE_ASSETS }) {
           <span className="text-lg font-bold tracking-[-0.05em]">fobs</span>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-[#edf5ef] px-3 py-1 text-[10px] text-[#23845b]">
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#23845b]" />
-            Live
+            Preview
           </span>
         </div>
 
         <div className="rounded-2xl bg-[#f5f4ef] p-4">
-          <span className="text-[10px] uppercase tracking-wide text-[#8b8c85]">Live prices</span>
+          <span className="text-[10px] uppercase tracking-wide text-[#8b8c85]">Preview</span>
           <div className="mt-3 space-y-3">
             {rows.length === 0 ? (
               <p className="py-6 text-center text-xs text-[#85867f]">
